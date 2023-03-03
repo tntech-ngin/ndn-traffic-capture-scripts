@@ -44,4 +44,4 @@ echo "Starting the capture services..."
 INTERFACE=$1
 #sudo systemctl enable ndntdump-capture.service -i $INTERFACE
 sudo systemctl start $(systemd-escape --template ndntdump-capture@.service "$INTERFACE")
-sudo systemctl start ndntdump-capture.timer
+#sudo systemctl start ndntdump-capture.timer

@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [ "$( docker container inspect -f '{{.State.Running}}' ndntdump1 )" == "true" ]; then
-    docker stop ndntdump1;
-    echo "ndntdump1 stopped";
-fi
-
-if [ "$( docker container inspect -f '{{.State.Running}}' ndntdump2 )" == "true" ]; then
-    docker stop ndntdump2
-    echo "ndntdump2 stopped";
+echo "Stopping containers..."
+docker ps -q --filter "name=ndntdump1" | grep -q . && docker stop ndntdump1 && docker rm -fv ndntdump1
+docker ps -q --filter "name=ndntdump2" | grep -q . && docker stop ndntdump2 && docker rm -fv ndntdump2
