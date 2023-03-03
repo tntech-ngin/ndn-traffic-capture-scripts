@@ -1,5 +1,5 @@
 start() {
-  exec /usr/local/bin/start_capture.sh -i <> -o <>
+  exec /usr/local/bin/start_capture.sh -i $1
 }
 
 stop() {

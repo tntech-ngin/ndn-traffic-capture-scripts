@@ -1,0 +1,14 @@
+[Unit]
+Description=Capture NDN Traffic and Transfer Output Files
+After=docker.service network-online.target
+
+[Service]
+Type=oneshot
+Environment="OUTPUT_DIR=/dump"
+ExecStart=/usr/local/sbin/capture start -i %i
+ExecStop=/usr/local/sbin/capture stop
+ExecStopPost=/usr/bin/scp -J ndntraces@orion.ngin.tntech.edu ${OUTPUT_DIR}/output-*.zst ndntraces@10.20.10.30:tracedata/ && rm -rf ${OUTPUT_DIR}
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
