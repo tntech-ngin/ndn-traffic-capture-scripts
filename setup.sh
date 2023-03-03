@@ -31,12 +31,10 @@ sudo cp ndntdump-capture@.service /etc/systemd/system/ndntdump-capture@.service
 sudo cp ndntdump-capture.timer /etc/systemd/system/ndntdump-capture.timer
 sudo cp start_capture.sh /usr/local/bin/start_capture.sh
 sudo cp stop_capture.sh /usr/local/bin/stop_capture.sh
-sudo cp ndntdump-capture /usr/local/sbin/ndntdump-capture
 
 # Make the necessary files executable
 sudo chmod +x /usr/local/bin/start_capture.sh
 sudo chmod +x /usr/local/bin/stop_capture.sh
-sudo chmod +x /usr/local/sbin/ndntdump-capture
 
 # Reload the systemd daemon to pick up the new service file
 sudo systemctl daemon-reload

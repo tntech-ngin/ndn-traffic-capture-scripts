@@ -11,7 +11,6 @@ sudo rm /etc/systemd/system/ndntdump-capture@.service
 sudo rm /etc/systemd/system/ndntdump-capture.timer
 sudo rm /usr/local/bin/start_capture.sh
 sudo rm /usr/local/bin/stop_capture.sh
-sudo rm /usr/local/sbin/ndntdump-capture
 
 # Reload the systemd daemon
 sudo systemctl daemon-reload
