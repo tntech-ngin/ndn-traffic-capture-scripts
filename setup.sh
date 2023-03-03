@@ -26,7 +26,7 @@ docker pull ghcr.io/usnistgov/ndntdump:latest
 # Copy the capture service files to the correct locations
 echo "Installing the capture service..."
 sudo cp ndntdump-capture.service /etc/systemd/system/ndntdump-capture.service
-sudo cp ndn6dump-timer.service /etc/systemd/system/ndntdump-capture.timer
+sudo cp ndntdump-timer.service /etc/systemd/system/ndntdump-capture.timer
 sudo cp start_capture.sh /usr/local/bin/start_capture.sh
 sudo cp stop_capture.sh /usr/local/bin/stop_capture.sh
 sudo cp ndntdump-capture /usr/local/sbin/ndntdump-capture
@@ -42,7 +42,7 @@ sudo systemctl daemon-reload
 # Enable and start the capture service
 echo "Enabling and starting the capture services..."
 INTERFACE=$1
-sudo systemctl enable --now ndntdump-capture.service --now --no-block --show-status -- i $INTERFACE
-sudo systemctl enable --now ndntdump-capture.timer
+sudo systemctl enable ndntdump-capture.service -- i $INTERFACE
+sudo systemctl enable ndntdump-capture.timer
 
 echo "Capture services installed."
