@@ -1,0 +1,11 @@
+start() {
+  exec /usr/local/bin/start_capture.sh -i <> -o <>
+}
+
+stop() {
+  exec /usr/local/bin/stop_capture.sh
+}
+
+case $1 in
+  start|stop) "$1" ;;
+esac

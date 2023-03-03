@@ -1,0 +1,11 @@
+[Unit]
+Description=Capture NDN Traffic
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/capture start
+ExecStop=/usr/bin/capture stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
