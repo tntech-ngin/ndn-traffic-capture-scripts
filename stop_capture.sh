@@ -7,6 +7,7 @@ while getopts 'o:' flag; do
     esac
 done
 
+FILENAME=$(basename $BASH_SOURCE)
 echo "Output Dir: $OUT_DIR";
 
 if [[ -z "$OUT_DIR" ]]; then
