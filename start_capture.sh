@@ -25,5 +25,5 @@ docker run --network host --name ndntdump1 -v ${PWD}/dump:${OUT_DIR} --rm -d ndn
 
 #how long does it take this for start up? Need to add sleep and check
 if [ "$( docker container inspect -f '{{.State.Running}}' ndntdump1 )" == "true" ]; then 
-    docker run --network host --name ndntdump2 -v ${PWD}/dump:$OUT_DIR --rm -d ndntdump --ifname lo -w /dump/output-ws-${DATE}.zst
+    docker run --network host --name ndntdump2 -v ${PWD}/dump:$OUT_DIR --rm -d ndntdump --ifname lo -w /dump/traffic-capture-ws-${DATE}.zst
 fi
