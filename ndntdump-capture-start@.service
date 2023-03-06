@@ -1,0 +1,12 @@
+[Unit]
+Description=Begin Capture NDN Traffic and Transfer Output Files
+After=docker.service network-online.target
+
+[Service]
+Type=oneshot
+Environment="INTERFACE=%I"
+ExecStart=/usr/local/bin/start_capture.sh -i ${INTERFACE}
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
