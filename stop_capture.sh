@@ -1,4 +1,7 @@
 #!/bin/bash
 
-docker rm -f ndntdump1 2>/dev/null
-docker rm -f ndntdump2 2>/dev/null
+IFACE_LIST=$(ip -o link show | awk -F': ' '{print $2}')
+for IFACE in $IFACE_LIST; do
+    IFACE=$(echo "$IFACE" | sed 's/[^a-zA-Z0-9_-]/-/g')
+    docker stop ndntdump-$IFACE >/dev/null 2>&1
+done

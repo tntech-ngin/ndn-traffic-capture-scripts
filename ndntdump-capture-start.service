@@ -4,8 +4,7 @@ After=docker.service network-online.target
 
 [Service]
 Type=oneshot
-Environment="INTERFACE=%I"
-ExecStart=/usr/local/bin/start_capture.sh -i ${INTERFACE}
+ExecStart=/usr/local/bin/start_capture.sh
 RemainAfterExit=yes
 
 [Install]

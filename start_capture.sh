@@ -1,19 +1,14 @@
 #!/bin/bash
 
-while getopts 'i:' flag; do
-    case "${flag}" in
-        i) IFACE=${OPTARG};;
-    esac
-done
-
 DATE=$(date +"%Y-%m-%d-%TS")
 OUT_DIR="/dump"
 
 mkdir -p $OUT_DIR
 
-docker rm -f ndntdump1 2>/dev/null
-docker rm -f ndntdump2 2>/dev/null
-
-id1=$(docker run --network host --name ndntdump1 -v $OUT_DIR:/dump --rm -d ndntdump --ifname ${IFACE} -w $OUT_DIR/output-${DATE}.zst)
-sleep 5
-id2=$(docker run --network host --name ndntdump2 -v $OUT_DIR:/dump --rm -d ndntdump --ifname lo -w $OUT_DIR/output-ws-${DATE}.zst)
+IFACE_LIST=$(ip -o link show | awk -F': ' '{print $2}')
+for IFACE in $IFACE_LIST; do
+    IFACE=$(echo "$IFACE" | sed 's/[^a-zA-Z0-9_-]/-/g')
+    docker stop ndntdump-$IFACE >/dev/null 2>&1
+    id=$(docker run --network host --name ndntdump-$IFACE -v $OUT_DIR:/dump --rm -d ndntdump --ifname $IFACE -w $OUT_DIR/output-$DATE-$IFACE.pcapng.zst)
+    echo "Started ndntdump container for interface $IFACE with ID: $id"
+done

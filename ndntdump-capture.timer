@@ -1,0 +1,11 @@
+[Unit]
+Description=Trigger ndn6dump container stop and begin file transfer
+After=ndntdump-capture-start.service
+Requires=ndntdump-capture-start.service
+
+[Timer]
+OnActiveSec=2m
+Unit=ndntdump-capture-stop.service
+
+[Install]
+WantedBy=timers.target
