@@ -4,7 +4,7 @@ After=ndntdump-capture-start.service
 Requires=ndntdump-capture-start.service
 
 [Timer]
-OnActiveSec=2m
+OnActiveSec=2h
 Unit=ndntdump-capture-stop.service
 
 [Install]
