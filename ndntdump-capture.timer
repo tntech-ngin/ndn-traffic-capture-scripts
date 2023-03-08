@@ -1,5 +1,5 @@
 [Unit]
-Description=Trigger ndn6dump container stop and begin file transfer
+Description=Trigger ndntdump container stop and begin file transfer
 After=ndntdump-capture-start.service
 Requires=ndntdump-capture-start.service
 
