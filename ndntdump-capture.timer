@@ -1,11 +1,10 @@
 [Unit]
 Description=Trigger ndntdump container stop and begin file transfer
-After=ndntdump-capture-start.service
-Requires=ndntdump-capture-start.service
+After=docker.service network-online.target
 
 [Timer]
 OnActiveSec=2h
-Unit=ndntdump-capture-stop.service
+Unit=ndntdump-capture-stop.service ndntdump-scp.service
 
 [Install]
 WantedBy=timers.target

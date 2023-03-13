@@ -4,11 +4,7 @@ After=docker.service network-online.target
 
 [Service]
 Type=oneshot
-Environment="OUTPUT_DIR=/dump"
-ExecStart=/usr/local/bin/stop_capture.sh
-ExecStopPost=/bin/sh -c "/usr/bin/scp -oProxyJump=ndntraces@orion.ngin.tntech.edu ${OUTPUT_DIR}/output-*.zst ndntraces@10.20.10.2430:tracedata/"
-ExecStopPost=/bin/rm -rf \"${OUTPUT_DIR}\"
-RemainAfterExit=no
+ExecStart=/usr/local/bin/ndntdump-capture-stop.sh
 
 [Install]
 WantedBy=multi-user.target

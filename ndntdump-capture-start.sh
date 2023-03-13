@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Pull ndntdump
+echo "Pulling ndntdump..."
+docker logout
+docker pull ghcr.io/usnistgov/ndntdump:latest
+docker tag ghcr.io/usnistgov/ndntdump:latest ndntdump:latest
+
+# Start containers
 DATE=$(date --utc +"%FT%TZ")
 OUT_DIR=/dump
 

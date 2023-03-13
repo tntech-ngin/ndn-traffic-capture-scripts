@@ -1,0 +1,7 @@
+[Unit]
+Description=Copy traces to remote server
+After=ndntdump-capture-stop.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/ndntdump-scp.sh
