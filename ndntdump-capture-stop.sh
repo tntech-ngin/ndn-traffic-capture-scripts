@@ -8,4 +8,3 @@ for IFACE in $IFACE_LIST; do
         docker stop ndntdump-$IFACE >/dev/null 2>&1
     fi
 done
-sleep 15
