@@ -1,9 +1,9 @@
 [Unit]
-Description=Stop Capture NDN Traffic and Transfer Output Files
-After=docker.service network-online.target
+Description=Stop Capturing NDN Traffic 
+Requires=ndntdump-scp.service
+Before=ndntdump-scp.service
 
 [Service]
-Type=oneshot
 ExecStart=/usr/local/bin/ndntdump-capture-stop.sh
 
 [Install]
