@@ -1,11 +1,9 @@
 [Unit]
-Description=Trigger ndntdump container start
+Description=Trigger ndntdump Container Start
 After=docker.service network-online.target
-Requires=ndntdump-capture-stop.timer
-Before=ndntdump-capture-stop.timer
 
 [Timer]
-OnCalendar=*-*-* 18:00:00 UTC
+OnCalendar=*-*-* 23:00:00 UTC
 Unit=ndntdump-capture-start.service
 
 [Install]

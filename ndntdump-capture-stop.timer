@@ -1,6 +1,6 @@
 [Unit]
 Description=Trigger ndntdump Container Stop
-After=ndntdump-capture-start.timer
+After=ndntdump-capture-start.service
 
 [Timer]
 OnActiveSec=2h
