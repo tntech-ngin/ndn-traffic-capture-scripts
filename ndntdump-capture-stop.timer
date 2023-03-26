@@ -1,6 +1,6 @@
 [Unit]
 Description=Trigger ndntdump Container Stop
-After=docker.service network-online.target
+After=ndntdump-capture-start.timer
 
 [Timer]
 OnActiveSec=2h
