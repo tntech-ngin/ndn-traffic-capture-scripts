@@ -10,6 +10,7 @@ sudo systemctl start docker
 # Copy service files to correct locations
 sudo cp ndntdump-capture-start.service /etc/systemd/system/ndntdump-capture-start.service
 sudo cp ndntdump-capture-stop.service /etc/systemd/system/ndntdump-capture-stop.service
+sudo cp ndntdump-scp.service /etc/systemd/system/ndntdump-scp.service
 sudo cp ndntdump-capture-start.timer /etc/systemd/system/ndntdump-capture-start.timer
 sudo cp ndntdump-capture-stop.timer /etc/systemd/system/ndntdump-capture-stop.timer
 sudo cp ndntdump-capture-start.sh /usr/local/bin/ndntdump-capture-start.sh
