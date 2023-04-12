@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Install Docker
-sudo apt update
-sudo apt install -y containerd docker.io
-sudo systemctl enable docker
-sudo usermod -aG docker $USER
-sudo systemctl start docker
+# Check for docker installation otherwise quit
+if ! command -v docker &> /dev/null
+then
+    echo "Docker not found. Please install docker and try again."
+    exit
+fi
 
 # Copy service files to correct locations
 sudo cp ndntdump-capture-start.service /etc/systemd/system/ndntdump-capture-start.service
@@ -28,3 +28,5 @@ sudo systemctl daemon-reload
 # Enable and start services
 sudo systemctl enable ndntdump-capture-start.timer
 sudo systemctl start ndntdump-capture-start.timer
+
+echo "Setup complete"

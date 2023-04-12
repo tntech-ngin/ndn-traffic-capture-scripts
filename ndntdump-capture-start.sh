@@ -9,7 +9,7 @@ docker tag ghcr.io/usnistgov/ndntdump:latest ndntdump:latest
 # Start containers
 DATE=$(date --utc +"%FT%TZ")
 NODE=$(hostname)
-OUT_DIR=/dump
+OUT_DIR=/home/ndnops/ndntdump-exp-2023
 
 mkdir -p "$OUT_DIR"
 
@@ -19,6 +19,6 @@ for IFACE in $IFACE_LIST; do
     if [[ $(docker ps -q -f name=ndntdump-$IFACE) ]]; then
         docker stop ndntdump-$IFACE >/dev/null 2>&1
     fi
-    id=$(docker run --network host --name ndntdump-$IFACE -v "$OUT_DIR":/dump --rm -d ndntdump --ifname $IFACE -w "$OUT_DIR/output-$NODE-$DATE-$IFACE.pcapng.zst")
+    id=$(docker run --network host --name ndntdump-$IFACE -v "$OUT_DIR":/dump --rm -d ndntdump --ifname $IFACE -w "/dump/output-$NODE-$DATE-$IFACE.pcapng.zst")
     echo "Started ndntdump container for interface $IFACE with ID: $id"
 done

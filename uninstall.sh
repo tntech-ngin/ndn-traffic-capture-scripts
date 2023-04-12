@@ -15,3 +15,5 @@ sudo rm /usr/local/bin/ndntdump-scp.sh
 
 # Reload systemd daemon
 sudo systemctl daemon-reload
+
+echo "Uninstall complete"
