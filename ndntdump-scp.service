@@ -3,4 +3,5 @@ Description=Copy Traces To Tntech Node
 After=ndntdump-capture-stop.service
 
 [Service]
+User=ndnops
 ExecStart=/usr/local/bin/ndntdump-scp.sh
