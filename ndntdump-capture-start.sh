@@ -18,4 +18,4 @@ if [[ $(docker ps -q -f name=ndntdump-$NODE) ]]; then
 fi
 
 id=$(docker run --network host --name ndntdump-$NODE -v "$OUT_DIR":/dump --rm -d ndntdump --ifname "*" -w "/dump/output-$NODE-$DATE.pcapng.zst")
-echo "Started ndntdump container for interface $IFACE with ID: $id"
+echo "Started ndntdump container for interface with ID: $id"
