@@ -1,8 +1,6 @@
 [Unit]
 Description=Start Capturing NDN Traffic
 After=docker.service network-online.target
-Requires=ndntdump-capture-stop.timer
-Before=ndntdump-capture-stop.timer
 
 [Service]
 ExecStart=/usr/local/bin/ndntdump-capture-start.sh

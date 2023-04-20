@@ -27,6 +27,8 @@ sudo systemctl daemon-reload
 
 # Enable and start services
 sudo systemctl enable ndntdump-capture-start.timer
+sudo systemctl enable ndntdump-capture-stop.timer
 sudo systemctl start ndntdump-capture-start.timer
+sudo systemctl start ndntdump-capture-stop.timer
 
 echo "Setup complete"

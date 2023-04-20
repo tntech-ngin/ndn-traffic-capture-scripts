@@ -4,6 +4,7 @@ Requires=ndntdump-scp.service
 Before=ndntdump-scp.service
 
 [Service]
+Type=oneshot
 ExecStart=/usr/local/bin/ndntdump-capture-stop.sh
 
 [Install]
