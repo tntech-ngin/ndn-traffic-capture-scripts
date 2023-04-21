@@ -25,6 +25,17 @@ sudo chmod +x /usr/local/bin/ndntdump-scp.sh
 # Reload systemd daemon to pick up new files
 sudo systemctl daemon-reload
 
+# Check if services are running, stop and disable them if they are
+if systemctl is-active --quiet "ndntdump*"; then
+    sudo systemctl stop "ndntdump*"
+fi
+if systemctl is-enabled --quiet "ndntdump-capture-start.timer"; then
+    sudo systemctl disable "ndntdump-capture-start.timer"
+fi
+if systemctl is-enabled --quiet "ndntdump-capture-stop.timer"; then
+    sudo systemctl disable "ndntdump-capture-stop.timer"
+fi
+
 # Enable and start services
 sudo systemctl enable ndntdump-capture-start.timer
 sudo systemctl enable ndntdump-capture-stop.timer
