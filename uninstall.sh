@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Stop services
+docker stop $(docker ps -q -f name=ndntdump-*) > /dev/null 2>&1
 sudo systemctl stop "ndntdump*"
 sudo systemctl disable "ndntdump-capture-start.timer"
 sudo systemctl disable "ndntdump-capture-stop.timer"

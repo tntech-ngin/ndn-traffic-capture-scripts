@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Check for docker installation otherwise quit
-if ! command -v docker &> /dev/null
-then
+if ! command -v docker &> /dev/null; then
     echo "Docker not found. Please install docker and try again."
     exit
 fi
@@ -26,15 +25,10 @@ sudo chmod +x /usr/local/bin/ndntdump-scp.sh
 sudo systemctl daemon-reload
 
 # Check if services are running, stop and disable them if they are
-if systemctl is-active --quiet "ndntdump*"; then
-    sudo systemctl stop "ndntdump*"
-fi
-if systemctl is-enabled --quiet "ndntdump-capture-start.timer"; then
-    sudo systemctl disable "ndntdump-capture-start.timer"
-fi
-if systemctl is-enabled --quiet "ndntdump-capture-stop.timer"; then
-    sudo systemctl disable "ndntdump-capture-stop.timer"
-fi
+docker stop $(docker ps -q -f name=ndntdump-*) > /dev/null 2>&1
+sudo systemctl stop "ndntdump*"
+sudo systemctl disable "ndntdump-capture-start.timer"
+sudo systemctl disable "ndntdump-capture-stop.timer"
 
 # Enable and start services
 sudo systemctl enable ndntdump-capture-start.timer
